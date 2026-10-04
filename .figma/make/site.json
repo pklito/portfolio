@@ -1,0 +1,10 @@
+{
+  "description": "Showcase your computer graphics projects with a professional portfolio website designed for students, helping you attract potential employers and clients.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

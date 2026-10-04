@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+/* Design tokens -> generate utilities like bg-ink, text-paper, bg-acid, font-serif, animate-pulse-dot */
+@theme {
+  --color-ink: #171714;
+  --color-paper: #f0efe8;
+  --color-acid: #d9ff43;
+  --color-violet: #7b61ff;
+  --color-line: rgb(23 23 20 / 0.2);
+
+  --font-mono: "DM Mono", monospace;
+  --font-sans: "Manrope", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+
+  --animate-pulse-dot: pulse-dot 2s infinite;
+
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgb(112 165 43 / 0);
+    }
+    50% {
+      box-shadow: 0 0 0 5px rgb(112 165 43 / 0.15);
+    }
+  }
+}
+
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  em {
+    @apply font-serif font-normal;
+  }
+}
+
+/* Animated underline for nav / footer links (pseudo-element tricks are cleaner as a utility) */
+@utility link-underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 250ms ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
