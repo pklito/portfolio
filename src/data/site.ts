@@ -7,6 +7,7 @@ export type Project = {
   description: string;
   image: string;
   featured?: boolean;
+  url?: string;
 };
 
 // This file is the portfolio's content hub. Edit text and projects here first.
@@ -35,6 +36,39 @@ export const currentProject = {
   image:
     "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=1800&q=85",
 };
+
+// These three cards appear directly on the Home page and link to GitHub.
+export const homepageProjects = [
+  {
+    title: "Cube Image Recognition",
+    category: "Computer vision",
+    description:
+      "An image-processing project that detects and recognizes cube faces from photographs.",
+    image:
+      "https://raw.githubusercontent.com/pklito/cube-image-detection/refs/heads/main/docs/solution.png",
+    url: "https://github.com/pklito/cube-image-detection",
+    color: "bg-sky",
+  },
+  {
+    title: "ARMP Paired Pathing",
+    category: "Robotics",
+    description:
+      "Two robot arms coordinate their paths while one balances a ball and the other observes it with a camera.",
+    image: "https://i.postimg.cc/SKjdwjpW/image.png",
+    url: "https://github.com/pklito/ARMP-Project/tree/main",
+    color: "bg-coral",
+  },
+  {
+    title: "Twitter Bookmark Sorter",
+    category: "Web · UX",
+    description:
+      "A browser tool for tagging, filtering, organizing, and locally backing up large Twitter bookmark collections.",
+    image:
+      "https://github.com/user-attachments/assets/f066910a-94c5-4d92-8736-53f07eb5855f",
+    url: "https://github.com/pklito/x-storer",
+    color: "bg-mint",
+  },
+];
 
 export const categoryInfo: Record<
   ProjectCategory,
@@ -66,6 +100,17 @@ export const categoryInfo: Record<
 export const projects: Record<ProjectCategory, Project[]> = {
   graphics: [
     {
+      title: "Cube Image Recognition",
+      year: "2025",
+      tools: "Computer vision · Python",
+      description:
+        "Detecting and recognizing cube faces from source photographs.",
+      image:
+        "https://raw.githubusercontent.com/pklito/cube-image-detection/refs/heads/main/docs/solution.png",
+      url: "https://github.com/pklito/cube-image-detection",
+      featured: true,
+    },
+    {
       title: "Soft Bodies",
       year: "2025",
       tools: "C++ · OpenGL · Simulation",
@@ -73,7 +118,6 @@ export const projects: Record<ProjectCategory, Project[]> = {
         "A real-time deformation system exploring tactile interactions between soft objects.",
       image:
         "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=1800&q=85",
-      featured: true,
     },
     {
       title: "Chromatic Flow",
@@ -96,13 +140,13 @@ export const projects: Record<ProjectCategory, Project[]> = {
   ],
   robotics: [
     {
-      title: "Visual Robot Lab",
+      title: "ARMP Paired Pathing",
       year: "2025",
-      tools: "ROS · Python · Control",
+      tools: "Python · OpenCV · Robot control",
       description:
-        "A visual interface for testing robot-arm trajectories and inspecting control states.",
-      image:
-        "https://images.unsplash.com/photo-1784821856280-401b76b03266?auto=format&fit=crop&w=1800&q=85",
+        "Paired robot arms follow synchronized paths while balancing and visually tracking a ball.",
+      image: "https://i.postimg.cc/SKjdwjpW/image.png",
+      url: "https://github.com/pklito/ARMP-Project/tree/main",
       featured: true,
     },
     {

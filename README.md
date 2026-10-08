@@ -26,6 +26,7 @@ Start here when personalizing the portfolio. This file stores:
 
 - `profile`: your name, role, introduction, email, and short-about bullets.
 - `currentProject`: the featured “currently working on” section on Home.
+- `homepageProjects`: the three friendly cards linking directly to GitHub.
 - `categoryInfo`: titles, introductions, and skills for each project field.
 - `projects`: all graphics, robotics, and games projects.
 

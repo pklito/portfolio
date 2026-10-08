@@ -2,10 +2,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #171714;
-  --color-paper: #f0efe8;
-  --color-acid: #d9ff43;
-  --color-violet: #7b61ff;
+  --color-ink: #243142;
+  --color-paper: #fffaf2;
+  --color-acid: #ffdc5e;
+  --color-violet: #9b87f5;
+  --color-coral: #ff8a70;
+  --color-mint: #a9e5c8;
+  --color-sky: #9dd9f3;
   --font-sans: "Manrope", sans-serif;
   --font-mono: "DM Mono", monospace;
   --font-serif: "Instrument Serif", serif;
