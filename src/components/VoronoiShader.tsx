@@ -7,9 +7,9 @@ const VERTEX_SHADER = `
   }
 `;
 
-import SH from "./shaders/Voronoi.frag?raw"
+import FRAGMENT_SHADER from './shaders/Voronoi.frag?raw'
 // Edit this string to experiment with the background fragment shader.
-export const FRAGMENT_SHADER = SH;
+
 
 function createShader(
   gl: WebGLRenderingContext,
