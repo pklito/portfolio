@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import VoronoiShader from "../components/VoronoiShader";
 import { currentProject, homepageProjects, profile } from "../data/site";
+import PdfViewer from "@/components/PdfViewer";
 
 const categoryLinks = [
   ["01", "Graphics", "/graphics", "Rendering, simulation, and procedural systems"],
@@ -176,17 +177,7 @@ export default function HomePage() {
         <VoronoiShader />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/10 to-black/40" />
         <div className="relative z-10">
-          <p className="font-mono text-[10px] tracking-[0.1em] uppercase">Let’s collaborate / WebGL experiment</p>
-          <h2 className="mt-7 max-w-[1100px] text-[clamp(52px,7.5vw,112px)] leading-[0.92] tracking-[-0.06em]">
-            Have a problem to <em className="font-serif font-normal">visualize?</em>
-          </h2>
-          <a
-            className="group mt-28 flex items-center justify-between border-b border-white/70 pb-5 text-[clamp(20px,2.2vw,32px)]"
-            href={`mailto:${profile.email}`}
-          >
-            {profile.email}
-            <span className="transition-transform group-hover:translate-x-2"><Arrow /></span>
-          </a>
+          <PdfViewer src="/cv-se.pdf" title="My CV" downloadName="Paulo-Khayat-CV.pdf" />
         </div>
       </section>
       <Footer blue />
