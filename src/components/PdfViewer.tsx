@@ -46,11 +46,11 @@ export default function PdfViewer({
   if (!showEmbed) return downloadButton;
 
   return (
-    <div>
+    <div className="max-w-[850px]">
       <object
         aria-label={title}
-        className="h-[80vh] w-full rounded-2xl border border-ink/10 bg-white"
-        data={`${src}#view=FitH`}
+        className="h-[85vh] w-full rounded-2xl border border-ink/10 bg-white"
+        data={`${src}#view=FitH&navpanes=0`}
         type="application/pdf"
       >
         <p className="p-6 text-sm">
