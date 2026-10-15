@@ -77,8 +77,8 @@
 @media (max-width: 639px) {
   .rotator {
     display: block;
-    font-size: 0.6em;
-    margin-top: 0.3em;
+    font-size: 0.85em;
+    margin-top: 0.1em;
   }
 }
 

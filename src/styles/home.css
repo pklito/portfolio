@@ -119,10 +119,16 @@
   z-index: 10;
   margin-block: auto;
   max-width: 1250px;
-  font-size: clamp(58px, 10vw, 150px);
+  font-size: clamp(40px, 6vw, 100px);
   font-weight: 500;
-  line-height: 0.88;
-  letter-spacing: -0.07em;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+/* Each headline line is its own block and never wraps, so the
+   headline's height can't change when the rotating word does. */
+.hero__line {
+  display: block;
+  white-space: nowrap;
 }
 .hero__accent {
   font-family: var(--font-serif);
@@ -530,6 +536,23 @@
 .cv__content {
   position: relative;
   z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  min-width: 0;
+}
+/* Tailwind's preflight used to constrain embedded media like this;
+   without it, canvases/iframes render at their intrinsic (zoomed) size. */
+.cv__content :where(canvas, svg, video) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.cv__content :where(iframe, embed, object) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 0;
 }
 
 /* =========================================================

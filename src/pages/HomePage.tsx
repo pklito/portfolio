@@ -18,7 +18,7 @@ const heroWords = [
   "graphics programming",
   "robotics",
   "software engineering",
-  "indie games",
+  "sandbox games",
 ];
 
 export default function HomePage() {
@@ -33,9 +33,10 @@ export default function HomePage() {
           <span className="hero__meta">Portfolio · 2025</span>
         </div>
         <h1 className="hero__title">
-          Hi, I’m Paulo.
-          <br />
-          I’m into <RotatingWords words={heroWords} suffix="." />
+          <span className="hero__line">Hi, I’m Paulo.</span>
+          <span className="hero__line">
+            I’m into <RotatingWords words={heroWords} suffix="." />
+          </span>
         </h1>
         <div className="hero__bottom">
           <p className="hero__intro">{profile.intro}</p>
