@@ -54,7 +54,7 @@ export default function PdfViewer({
         type="application/pdf"
       >
         <p className="p-6 text-sm">
-          Your browser can’t display this PDF here. Use the download button below.
+          Your browser can't display this PDF here. Use the download button below.
         </p>
       </object>
       <div className="mt-4">{downloadButton}</div>

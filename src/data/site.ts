@@ -13,12 +13,12 @@ export type Project = {
 // This file is the portfolio's content hub. Edit text and projects here first.
 export const profile = {
   name: "Paulo Khayat",
-  role: "Computer graphics master’s student",
+  role: "Computer graphics master's student",
   intro:
     "I build visual systems at the intersection of graphics, robotics, and games.",
   email: "hello@example.com",
   aboutPoints: [
-    "Master’s student focused on computer graphics",
+    "Master's student focused on computer graphics",
     "Interested in real-time rendering and physical simulation",
     "Building interactive work across graphics, robotics, and games",
     "Always learning through prototypes and visual experiments",
@@ -31,7 +31,7 @@ export const currentProject = {
   title: "Interactive Soft-Body Playground",
   category: "Graphics + simulation",
   description:
-    "A real-time sandbox for sculpting and interacting with deformable objects. I’m currently refining GPU performance and the interaction model.",
+    "A real-time sandbox for sculpting and interacting with deformable objects. I'm currently refining GPU performance and the interaction model.",
   nextMilestone: "Next: stable collisions and a public web demo",
   image:
     "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=1800&q=85",
