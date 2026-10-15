@@ -5,12 +5,20 @@ import Header from "../components/Header";
 import VoronoiShader from "../components/VoronoiShader";
 import { currentProject, homepageProjects, profile } from "../data/site";
 import PdfViewer from "@/components/PdfViewer";
+import RotatingWords from "../components/Rotatingwords";
 import "../styles/home.css";
 
 const categoryLinks = [
   ["01", "Graphics", "/graphics", "Rendering, simulation, and procedural systems"],
   ["02", "Robotics", "/robotics", "Perception, planning, and physical interaction"],
   ["03", "Games", "/games", "Playable systems and interactive worlds"],
+];
+
+const heroWords = [
+  "graphics programming",
+  "robotics",
+  "software engineering",
+  "indie games",
 ];
 
 export default function HomePage() {
@@ -27,7 +35,7 @@ export default function HomePage() {
         <h1 className="hero__title">
           Hi, I’m Paulo.
           <br />
-          I make <em className="hero__accent">curious</em> things.
+          I’m into <RotatingWords words={heroWords} suffix="." />
         </h1>
         <div className="hero__bottom">
           <p className="hero__intro">{profile.intro}</p>
