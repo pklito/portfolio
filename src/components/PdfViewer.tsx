@@ -46,7 +46,7 @@ export default function PdfViewer({
   if (!showEmbed) return downloadButton;
 
   return (
-    <div className="max-w-[850px]">
+    <div className="">
       <object
         aria-label={title}
         className="h-[85vh] w-full rounded-2xl border border-ink/10 bg-white"
@@ -59,5 +59,5 @@ export default function PdfViewer({
       </object>
       <div className="mt-4">{downloadButton}</div>
     </div>
-  );
+  ); 
 }

@@ -165,6 +165,7 @@
 
 .hero__blob {
   position: absolute;
+  z-index: 0;
 }
 .hero__blob--coral {
   top: 23%;
@@ -593,4 +594,27 @@
 
 @media (min-width: 1024px) {
   .projects__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+.hero__photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 55%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 30%);
+}
+
+/* keep the photo from crowding the text on phones */
+@media (max-width: 767px) {
+  .hero__photo {
+    width: 100%;
+    opacity: 0.35;
+  }
 }

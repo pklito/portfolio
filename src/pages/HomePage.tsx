@@ -5,8 +5,9 @@ import Header from "../components/Header";
 import VoronoiShader from "../components/VoronoiShader";
 import { currentProject, homepageProjects, profile } from "../data/site";
 import PdfViewer from "@/components/PdfViewer";
-import RotatingWords from "../components/Rotatingwords";
+import RotatingWords from "../components/RotatingWords";
 import "../styles/home.css";
+import imgbook from "../assets/booktall.jpg";
 
 const categoryLinks = [
   ["01", "Graphics", "/graphics", "Rendering, simulation, and procedural systems"],
@@ -26,14 +27,14 @@ export default function HomePage() {
     <main className="home">
       <Header />
 
-      {/* Hero */}
       <section className="hero">
+        <img className="hero__photo" src={imgbook} alt="Paulo" />
         <div className="hero__top">
           <span className="hero__pill">Hello there, welcome in!</span>
-          <span className="hero__meta">Portfolio · 2025</span>
+          <span className="hero__meta">Portfolio · 2026</span>
         </div>
         <h1 className="hero__title">
-          <span className="hero__line">Hi, I’m Paulo.</span>
+          <span className="hero__line">Hi, I'm Paulo.</span>
           <span className="hero__line">
             I’m into <RotatingWords words={heroWords} suffix="." />
           </span>
@@ -55,7 +56,7 @@ export default function HomePage() {
           <div>
             <p className="label">A few things I’ve made</p>
             <h2 className="projects__title">
-              Projects, experiments<br />&amp; <em className="serif">useful oddities.</em>
+              Projects
             </h2>
           </div>
           <p className="projects__hint">
@@ -139,25 +140,6 @@ export default function HomePage() {
           <Link className="about__link" to="/about">
             Read the detailed about <Arrow />
           </Link>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="categories">
-        <p className="label categories__label">Explore projects by field</p>
-        <div className="categories__grid">
-          {categoryLinks.map(([number, label, to, copy]) => (
-            <Link className={`category-card category-card--${number}`} key={to} to={to}>
-              <span className="category-card__number">{number}</span>
-              <h2 className="category-card__title">
-                {label}
-                <span className="category-card__arrow">
-                  <Arrow />
-                </span>
-              </h2>
-              <p className="category-card__copy">{copy}</p>
-            </Link>
-          ))}
         </div>
       </section>
 

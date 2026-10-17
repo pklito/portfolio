@@ -15,7 +15,7 @@ export const profile = {
   name: "Paulo Khayat",
   role: "Computer graphics master's student",
   intro:
-    "I build visual systems at the intersection of graphics, robotics, and games.",
+    "",
   email: "hello@example.com",
   aboutPoints: [
     "Master's student focused on computer graphics",
