@@ -68,6 +68,16 @@ export const homepageProjects = [
     url: "https://github.com/pklito/x-storer",
     color: "bg-mint",
   },
+  {
+    title: "Game jams",
+    category: "Gamedev",
+    description:
+      "A collection of some game jam games I made under time pressure!\nThese ones are all playable in browser.",
+    image:
+      "https://img.itch.zone/aW1nLzI4NzgzOTQ1LmdpZg==/315x250%23c/B3IUi%2B.gif",
+    url: "https://itch.io/c/8391890/games-ive-made",
+    color: "bg-mint",
+  },
 ];
 
 export const categoryInfo: Record<
