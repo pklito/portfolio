@@ -2,18 +2,14 @@ import { NavLink } from "react-router";
 import { profile } from "../data/site";
 
 const links = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Graphics", to: "/graphics" },
-  { label: "Robotics", to: "/robotics" },
-  { label: "Games", to: "/games" },
+  { label: "Home", to: "/" }
 ];
 
 export default function Header({ dark = false }: { dark?: boolean }) {
   return (
     <header
       className={`relative z-30 px-[3.2vw] ${
-        dark ? "bg-ink text-paper" : "bg-paper text-ink"
+        !dark ? "bg-ink text-paper" : "bg-paper text-ink"
       }`}
     >
       <div className="flex min-h-20 items-center justify-between gap-8 border-b border-current/15">
