@@ -27,12 +27,12 @@ export const profile = {
 
 // Keep this object short: it drives the “Currently working on” card on Home.
 export const currentProject = {
-  status: "In progress · Spring 2025",
-  title: "Interactive Soft-Body Playground",
-  category: "Graphics + simulation",
+  status: "October 2026",
+  title: "This website! (&HW)",
+  category: "Web dev",
   description:
-    "A real-time sandbox for sculpting and interacting with deformable objects. I'm currently refining GPU performance and the interaction model.",
-  nextMilestone: "Next: stable collisions and a public web demo",
+    "Learning React+Vite in order to make a better portfolio. I put something together quickly in order to not bottleneck, but I want to spend the time to really personalize this site to my best efforts.",
+  nextMilestone: "",
   image:
     "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=1800&q=85",
 };
