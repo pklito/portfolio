@@ -15,9 +15,7 @@ const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1]
   return {
     base: process.env.FIGMA_PUBLIC_URL
       ? `${process.env.FIGMA_PUBLIC_URL}/`
-      : process.env.GITHUB_ACTIONS && repoName
-        ? `/${repoName}/`
-        : '/',
+      : '/',
       build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
