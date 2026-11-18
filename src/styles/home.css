@@ -597,8 +597,17 @@
   .projects__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-
 .hero__photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 55%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero__photo__old {
   position: absolute;
   top: 0;
   right: 0;
