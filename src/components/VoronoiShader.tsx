@@ -104,10 +104,17 @@ export default function VoronoiShader() {
 
     canvas.parentElement?.addEventListener("pointermove", onPointerMove);
     canvas.parentElement?.addEventListener("pointerleave", onPointerLeave);
-    frame = requestAnimationFrame(render);
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        observer.disconnect();
+        frame = requestAnimationFrame(render);
+      }
+    });
+    observer.observe(canvas);
 
     return () => {
       cancelAnimationFrame(frame);
+      observer.disconnect();
       canvas.parentElement?.removeEventListener("pointermove", onPointerMove);
       canvas.parentElement?.removeEventListener("pointerleave", onPointerLeave);
       gl.deleteProgram(program);

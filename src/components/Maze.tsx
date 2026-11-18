@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import DoubleBuffer from "./DoubleBuffer";
 
-const SIZE = 512;
+const SIZE = 150;
 
 const BLIT_VERTEX_SHADER = `
   attribute vec2 a_position;
@@ -49,7 +49,7 @@ export default function MazeShader() {
     canvas.width = SIZE;
     canvas.height = SIZE;
 
-    const sim = new DoubleBuffer(gl, SIZE, SIZE);
+    const sim = new DoubleBuffer(gl, 1.2*SIZE, SIZE);
 
     const vertexShader = createShader(gl, gl.VERTEX_SHADER, BLIT_VERTEX_SHADER);
     const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, BLIT_FRAGMENT_SHADER);
