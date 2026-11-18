@@ -1,58 +1,54 @@
+precision highp float;
 
-  precision highp float;
-
-  uniform vec2 u_resolution;
-  uniform vec2 u_render_resolution;
-  uniform vec2 u_mouse;
-  uniform float u_time;
-
-  float random(vec2 p) {
-    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+uniform sampler2D	uTex0;
+uniform float seed;
+uniform vec2 texel;
+varying vec2		TexCoord0;
+bool xor(bool a, bool b){
+  return (a && !b) || (b && !a);
+}
+float rand(vec2 co){
+    return fract(sin(dot(co + fract(seed), vec2(12.9898 - fract(seed/0.2), 78.233))) * 43758.5453);
+}
+void main( void ) {
+  gl_FragColor = texture2D( uTex0, TexCoord0);
+  if(gl_FragColor.r > 0.5){
+    return;
   }
-
-  vec2 random2(vec2 p) {
-    return fract(sin(vec2(
-      dot(p, vec2(127.1, 311.7)),
-      dot(p, vec2(269.5, 183.3))
-    )) * 43758.5453);
+  vec2 point = vec2(rand(vec2(1,1)),rand(vec2(3,3)));
+  vec2 goal =  point - TexCoord0;
+  bool lr = point.x > point.y;
+  if( (fract(goal.x/(2.0*texel.x))< 0.3 && lr) || (!lr && fract(goal.y/(3.0*texel.y)) < 0.3)){
   }
-
-  float voronoi(vec2 x) {
-    vec2 cell = floor(x);
-    vec2 local = fract(x);
-    float distanceToCell = 1.0;
-    vec2 closest = vec2(0,0);
-
-    for (int y = -1; y <= 1; y++) {
-      for (int xOffset = -1; xOffset <= 1; xOffset++) {
-        vec2 neighbor = vec2(float(xOffset), float(y));
-        vec2 point = random2(cell + neighbor);
-        point = 0.5 + 0.45 * sin(u_time * 0.28 + 6.2831 * point);
-        vec2 difference = neighbor + point - local;
-        if(distanceToCell < length(difference)) closest = point;
-        distanceToCell = min(distanceToCell, length(difference));
-      }
-    }
-
-    return random(closest);
+  else{
+    return;
   }
-
-  void main() {
-    vec2 uv = gl_FragCoord.xy / u_render_resolution.xy;
-    vec2 aspect = vec2(u_resolution.x / u_resolution.y, 1.0);
-    float cells = voronoi(uv * aspect * 5.0);
-    float edgeGlow = smoothstep(0.72, 0.12, cells);
-
-    vec3 deepBlue = vec3(0.015, 0.055, 0.18);
-    vec3 electricBlue = vec3(0.07, 0.42, 0.95);
-    vec3 color = mix(deepBlue, electricBlue, edgeGlow);
-
-    vec2 mouse = u_mouse / u_resolution;
-    mouse.y = 1.0 - mouse.y;
-    float mouseDistance = distance(uv * aspect, mouse * aspect);
-    float mouseShadow = smoothstep(0.42, 0.02, mouseDistance);
-    color *= 1.0 - mouseShadow * 0.78;
-
-    float grain = random(gl_FragCoord.xy + u_time) * 0.025;
-    gl_FragColor = vec4(color + grain, 1.0);
+  bool a1 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,- texel.y) ).r > 0.5;
+  bool a2 = texture2D( uTex0, TexCoord0 + vec2(0,-texel.y) ).r > 0.5;
+  bool a3 = texture2D( uTex0, TexCoord0 + vec2(texel.x,- texel.y) ).r > 0.5;
+  bool a4 = texture2D( uTex0, TexCoord0 + vec2(-texel.x,0) ).r > 0.5;
+  bool a6 = texture2D( uTex0, TexCoord0 + vec2(texel.x,0) ).r > 0.5;
+  bool a7 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ).r > 0.5;
+  bool a8 = texture2D( uTex0, TexCoord0 + vec2(0,texel.y) ).r > 0.5;
+  bool a9 = texture2D( uTex0, TexCoord0 + vec2(texel.x,texel.y) ).r > 0.5;
+  vec4 color = vec4(1,1,1,1);
+  // vec4 color = texture( uTex0, TexCoord0 + vec2(- texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(0,-texel.y) ) + texture( uTex0, TexCoord0 +
+  //  vec2(texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) +
+  //   texture( uTex0, TexCoord0 + vec2(texel.x,0) ) + texture( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ) + texture( uTex0, TexCoord0 + vec2(0,texel.y) )
+  //   + texture( uTex0, TexCoord0 + vec2(texel.x,texel.y) );
+  //   color = color / 8;
+  //   color = vec4(1) - color;
+  //   //color.r = 1;
+  //   color.a = 1;
+  color.g = 1.0/(seed*seed+1.0);
+  color.b = 1.0/(1.0+seed*seed);
+  float _c = 0.75;
+  float _n = 1.0;
+  float count = (a1 ? _c : 0.0) + (a3 ? _c : 0.0)+ (a7 ? _c : 0.0)+ (a9 ? _c : 0.0)+ (a2 ? _n : 0.0)+ (a4 ? _n : 0.0)+ (a6 ? _n : 0.0)+ (a8 ? _n : 0.0);
+  if( (a1 && !xor(a2,a4)) || (a3 && !xor(a2,a6)) || (a7 && !xor(a4,a8)) || (a9 && !xor(a8,a6))){
+    return;
   }
+  if(count < 3.5 && rand(TexCoord0) > 0.95){
+    gl_FragColor = color;
+  }
+}

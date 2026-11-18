@@ -8,6 +8,7 @@ import PdfViewer from "@/components/PdfViewer";
 import RotatingWords from "../components/RotatingWords";
 import "../styles/home.css";
 import imgbook from "../assets/booktall.jpg";
+import MazeShader from "@/components/Maze";
 
 const categoryLinks = [
   ["01", "Graphics", "/graphics", "Rendering, simulation, and procedural systems"],
@@ -136,7 +137,7 @@ export default function HomePage() {
 
       {/* CV */}
       <section className="cv">
-        <VoronoiShader />
+        <MazeShader />
         <div className="cv__overlay" />
         <div className="cv__content">
           <PdfViewer src="/cv-se.pdf" title="My CV" downloadName="Paulo-Khayat-CV.pdf" />
