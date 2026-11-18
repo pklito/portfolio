@@ -28,8 +28,8 @@ export default function HomePage() {
       <Header />
 
       <section className="hero">
-        {/*<HeroShader src={imgbook} /> */}
-        <img className="hero__photo__old" src={imgbook} alt="Paulo" />
+        <HeroShader src={imgbook} />
+        {/* <img className="hero__photo__old" src={imgbook} alt="Paulo" /> */}
         <div className="hero__top">
         </div>
         <h1 className="hero__title">
