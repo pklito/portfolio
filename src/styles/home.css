@@ -8,7 +8,7 @@
    Tailwind theme (src/index.css @theme block or tailwind.config).
    Only --ink is known for sure (from the #243142 shadow). */
 :root {
---paper: #E9E5DC;
+--paper: #E5CEC6;
 --ink: #171717;
 --mint: #B6C8B1;
 --violet: #6956A5;

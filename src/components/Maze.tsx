@@ -75,11 +75,16 @@ export default function MazeShader() {
 
     const position = gl.getAttribLocation(blitProgram, "a_position");
     const texture = gl.getUniformLocation(blitProgram, "u_texture");
-    const resolution = gl.getUniformLocation(blitProgram, "u_render_resolution");
+    const resolution = gl.getUniformLocation(blitProgram, "u_resolution");
+    const render_resolution = gl.getUniformLocation(blitProgram, "u_render_resolution");
     let frame = 0;
 
     const render = (timestamp: number) => {
-      sim.step(timestamp * 0.002);
+      sim.step(timestamp * 0.0006);
+    const bounds = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      const width = Math.round(bounds.width * dpr);
+      const height = Math.round(bounds.height * dpr);
 
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.useProgram(blitProgram);
@@ -88,7 +93,8 @@ export default function MazeShader() {
       gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
       gl.bindTexture(gl.TEXTURE_2D, sim.texture);
       gl.uniform1i(texture, 0);
-      gl.uniform2f(resolution, canvas.width, canvas.height);
+      gl.uniform2f(resolution, width, height);
+      gl.uniform2f(render_resolution, canvas.width, canvas.height);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       frame = requestAnimationFrame(render);
     };
