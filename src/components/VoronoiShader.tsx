@@ -62,6 +62,7 @@ export default function VoronoiShader() {
 
     const position = gl.getAttribLocation(program, "a_position");
     const resolution = gl.getUniformLocation(program, "u_resolution");
+    const render_resolution = gl.getUniformLocation(program, "u_render_resolution");
     const mouse = gl.getUniformLocation(program, "u_mouse");
     const time = gl.getUniformLocation(program, "u_time");
     const pointer = { x: -1000, y: -1000 };
@@ -83,16 +84,13 @@ export default function VoronoiShader() {
       const dpr = Math.min(window.devicePixelRatio, 2);
       const width = Math.round(bounds.width * dpr);
       const height = Math.round(bounds.height * dpr);
-      if (canvas.width !== width || canvas.height !== height) {
-        canvas.width = width;
-        canvas.height = height;
-      }
 
-      gl.viewport(0, 0, width, height);
+      gl.viewport(0, 0, canvas.width, canvas.height);
       gl.useProgram(program);
       gl.enableVertexAttribArray(position);
       gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
       gl.uniform2f(resolution, width, height);
+      gl.uniform2f(render_resolution, canvas.width, canvas.height);
       gl.uniform2f(mouse, pointer.x * dpr, pointer.y * dpr);
       gl.uniform1f(time, timestamp * 0.001);
       gl.drawArrays(gl.TRIANGLES, 0, 6);

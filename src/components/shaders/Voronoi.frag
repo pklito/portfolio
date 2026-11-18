@@ -2,6 +2,7 @@
   precision highp float;
 
   uniform vec2 u_resolution;
+  uniform vec2 u_render_resolution;
   uniform vec2 u_mouse;
   uniform float u_time;
 
@@ -35,7 +36,7 @@
   }
 
   void main() {
-    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+    vec2 uv = gl_FragCoord.xy / u_render_resolution.xy;
     vec2 aspect = vec2(u_resolution.x / u_resolution.y, 1.0);
     float cells = voronoi(uv * aspect * 5.0);
     float edgeGlow = smoothstep(0.72, 0.12, cells);
