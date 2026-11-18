@@ -16,13 +16,7 @@ export const profile = {
   role: "Computer graphics master's student",
   intro:
     "",
-  email: "hello@example.com",
-  aboutPoints: [
-    "Master's student focused on computer graphics",
-    "Interested in real-time rendering and physical simulation",
-    "Building interactive work across graphics, robotics, and games",
-    "Always learning through prototypes and visual experiments",
-  ],
+  email: "paulokhayat@gmail.com",
 };
 
 // Keep this object short: it drives the “Currently working on” card on Home.

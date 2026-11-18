@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import { profile } from "../data/site";
 
 export default function Footer({ blue = false }: { blue?: boolean }) {
   return (
@@ -10,7 +9,7 @@ export default function Footer({ blue = false }: { blue?: boolean }) {
           : "border-paper/20 bg-ink text-paper"
       }`}
     >
-      <p>{profile.name} © 2025</p>
+      <p>Paulo Khayat © 2026</p>
       <div className="hidden gap-6 md:flex">
         <a href="https://www.linkedin.com" rel="noreferrer" target="_blank">LinkedIn</a>
         <a href="https://github.com" rel="noreferrer" target="_blank">GitHub</a>

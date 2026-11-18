@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import Arrow from "../Arrow";
 import Eyebrow from "../Eyebrow";
-import { profile } from "../../data/site";
 
 export default function AboutSection() {
   return (
@@ -14,12 +13,7 @@ export default function AboutSection() {
       </div>
       <div>
         <ul className="about__list">
-          {profile.aboutPoints.map((point, index) => (
-            <li className="about__item" key={point}>
-              <span className="about__index">0{index + 1}</span>
-              {point}
-            </li>
-          ))}
+          
         </ul>
         <Link className="about__link" to="/about">
           Read the detailed about <Arrow />

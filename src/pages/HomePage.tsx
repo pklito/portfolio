@@ -3,7 +3,7 @@ import Arrow from "../components/Arrow";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import VoronoiShader from "../components/VoronoiShader";
-import { currentProject, homepageProjects, profile } from "../data/site";
+import { currentProject, homepageProjects} from "../data/site";
 import PdfViewer from "@/components/PdfViewer";
 import RotatingWords from "../components/RotatingWords";
 import "../styles/home.css";
@@ -30,17 +30,13 @@ export default function HomePage() {
       <section className="hero">
         <img className="hero__photo" src={imgbook} alt="Paulo" />
         <div className="hero__top">
-          <span className="hero__pill">Hello there, welcome in!</span>
-          <span className="hero__meta">Portfolio · 2026</span>
         </div>
         <h1 className="hero__title">
-          <span className="hero__line">Hi, I'm Paulo.</span>
-          <span className="hero__line">
-            I’m into <RotatingWords words={heroWords} suffix="." />
-          </span>
+          <span className="hero__line">Hey! I'm</span>
+          <span className="hero__line">Paulo Khayat</span>
         </h1>
         <div className="hero__bottom">
-          <p className="hero__intro">{profile.intro}</p>
+          <p className="hero__intro">asdasd</p>
           <a className="hero__button" href="#projects" aria-label="See featured projects">
             <Arrow down />
           </a>
@@ -130,12 +126,7 @@ export default function HomePage() {
         </div>
         <div>
           <ul className="about__list">
-            {profile.aboutPoints.map((point, index) => (
-              <li className="about__item" key={point}>
-                <span className="about__number">0{index + 1}</span>
-                {point}
-              </li>
-            ))}
+            
           </ul>
           <Link className="about__link" to="/about">
             Read the detailed about <Arrow />
