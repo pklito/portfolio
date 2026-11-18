@@ -32,7 +32,6 @@ function createShader(
 
 export default function VoronoiShader() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     const gl = canvas?.getContext("webgl", { antialias: false });
@@ -50,6 +49,12 @@ export default function VoronoiShader() {
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
       console.error("Shader link error:", gl.getProgramInfoLog(program));
       return;
+    }
+
+
+    if(canvas.width != 1000 || canvas.height != 1000){
+      canvas.width = 1000;
+  canvas.height = 1000;
     }
 
     const buffer = gl.createBuffer();
