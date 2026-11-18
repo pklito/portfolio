@@ -18,6 +18,8 @@ export default class DoubleBuffer {
   private readIndex = 0;
   private width: number;
   private height: number;
+  private time: number = 0;
+  private skipped_time: number = 0;
 
   constructor(gl: WebGLRenderingContext, width: number, height: number) {
     this.gl = gl;
@@ -68,8 +70,12 @@ export default class DoubleBuffer {
   get texture() {
     return this.textures[this.readIndex];
   }
-
+  
   step(seed: number) {
+    if(seed - this.time > 0.3){
+      this.skipped_time += seed - this.time;
+    }
+    this.time = seed;
     const gl = this.gl;
     const writeIndex = 1 - this.readIndex;
 
@@ -85,7 +91,7 @@ export default class DoubleBuffer {
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, this.textures[this.readIndex]);
     gl.uniform1i(gl.getUniformLocation(this.program, "uTex0"), 0);
-    gl.uniform1f(gl.getUniformLocation(this.program, "seed"), seed);
+    gl.uniform1f(gl.getUniformLocation(this.program, "seed"), seed - this.skipped_time);
     gl.uniform2f(gl.getUniformLocation(this.program, "texel"), 1 / this.width, 1 / this.height);
 
     gl.drawArrays(gl.TRIANGLES, 0, 6);

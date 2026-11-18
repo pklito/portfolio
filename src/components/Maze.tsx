@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import DoubleBuffer from "./DoubleBuffer";
 
 const SIZE = 150;
+const WIDTH_ASPECT = 1.5;
 
 const BLIT_VERTEX_SHADER = `
   attribute vec2 a_position;
@@ -46,10 +47,10 @@ export default function MazeShader() {
     const gl = canvas?.getContext("webgl", { antialias: false });
     if (!canvas || !gl) return;
 
-    canvas.width = SIZE;
+    canvas.width = WIDTH_ASPECT*SIZE;
     canvas.height = SIZE;
 
-    const sim = new DoubleBuffer(gl, 1.2*SIZE, SIZE);
+    const sim = new DoubleBuffer(gl,WIDTH_ASPECT*SIZE, SIZE);
 
     const vertexShader = createShader(gl, gl.VERTEX_SHADER, BLIT_VERTEX_SHADER);
     const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, BLIT_FRAGMENT_SHADER);
@@ -78,10 +79,11 @@ export default function MazeShader() {
     const resolution = gl.getUniformLocation(blitProgram, "u_resolution");
     const render_resolution = gl.getUniformLocation(blitProgram, "u_render_resolution");
     let frame = 0;
+    let t
 
     const render = (timestamp: number) => {
       sim.step(timestamp * 0.0006);
-    const bounds = canvas.getBoundingClientRect();
+      const bounds = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio, 2);
       const width = Math.round(bounds.width * dpr);
       const height = Math.round(bounds.height * dpr);
@@ -99,10 +101,17 @@ export default function MazeShader() {
       frame = requestAnimationFrame(render);
     };
 
-    frame = requestAnimationFrame(render);
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        observer.disconnect();
+        frame = requestAnimationFrame(render);
+      }
+    });
+    observer.observe(canvas);
 
     return () => {
       cancelAnimationFrame(frame);
+      observer.disconnect();
       sim.dispose();
       gl.deleteProgram(blitProgram);
       gl.deleteShader(vertexShader);
@@ -114,7 +123,7 @@ export default function MazeShader() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 size-full bg-[#06123d] [image-rendering:pixelated]"
+      className="absolute inset-0 size-full [image-rendering:pixelated]"
       aria-hidden="true"
     />
   );
