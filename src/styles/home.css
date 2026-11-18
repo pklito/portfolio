@@ -8,13 +8,14 @@
    Tailwind theme (src/index.css @theme block or tailwind.config).
    Only --ink is known for sure (from the #243142 shadow). */
 :root {
---paper: #E5CEC6;
+--paper: #FFFFFF;
 --ink: #171717;
 --mint: #B6C8B1;
 --violet: #6956A5;
 --coral: #E63B2E;
 --acid: #D9E66A;
 --sky: #9CB9D1;
+--maze: #E5CEC6;
 
   --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
@@ -532,7 +533,7 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
 }
 .cv__content {
   position: relative;

@@ -5,6 +5,8 @@ uniform float seed;
 uniform vec2 texel;
 varying vec2		TexCoord0;
 
+uniform vec4 topColor;
+
 vec3 hexToRgb(float hex) {
     float r = floor(hex / 65536.0);
     float g = floor((hex - r * 65536.0) / 256.0);
@@ -25,11 +27,15 @@ float rand(vec2 co){
 float lerp(float a, float b, float u){
   return (1.-u)*a + u*b;
 }
-void main( void ) {
-vec3 TopColor = hexToRgb(float(0xE9E5DC));
 
+const float red_thresh = 0.5;
+void main( void ) {
+  vec4 topColorFallback = vec4(hexToRgb(float(0xE9E5DC)),1.);
+  if(dot(topColor,topColor) > 0.4){
+    topColorFallback = topColor;
+  }
   gl_FragColor = texture2D( uTex0, TexCoord0);
-  if(gl_FragColor.r > 0.5){
+  if(gl_FragColor.r > red_thresh){
     return;
   }
   vec2 point = vec2(rand(vec2(1,1)),rand(vec2(3,3)));
@@ -40,14 +46,14 @@ vec3 TopColor = hexToRgb(float(0xE9E5DC));
   else{
     return;
   }
-  bool a1 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,- texel.y) ).r > 0.5;
-  bool a2 = texture2D( uTex0, TexCoord0 + vec2(0,-texel.y) ).r > 0.5;
-  bool a3 = texture2D( uTex0, TexCoord0 + vec2(texel.x,- texel.y) ).r > 0.5;
-  bool a4 = texture2D( uTex0, TexCoord0 + vec2(-texel.x,0) ).r > 0.5;
-  bool a6 = texture2D( uTex0, TexCoord0 + vec2(texel.x,0) ).r > 0.5;
-  bool a7 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ).r > 0.5;
-  bool a8 = texture2D( uTex0, TexCoord0 + vec2(0,texel.y) ).r > 0.5;
-  bool a9 = texture2D( uTex0, TexCoord0 + vec2(texel.x,texel.y) ).r > 0.5;
+  bool a1 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,- texel.y) ).r > red_thresh;
+  bool a2 = texture2D( uTex0, TexCoord0 + vec2(0,-texel.y) ).r > red_thresh;
+  bool a3 = texture2D( uTex0, TexCoord0 + vec2(texel.x,- texel.y) ).r > red_thresh;
+  bool a4 = texture2D( uTex0, TexCoord0 + vec2(-texel.x,0) ).r > red_thresh;
+  bool a6 = texture2D( uTex0, TexCoord0 + vec2(texel.x,0) ).r > red_thresh;
+  bool a7 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ).r > red_thresh;
+  bool a8 = texture2D( uTex0, TexCoord0 + vec2(0,texel.y) ).r > red_thresh;
+  bool a9 = texture2D( uTex0, TexCoord0 + vec2(texel.x,texel.y) ).r > red_thresh;
   vec4 color = vec4(1,1,1,1);
   // vec4 color = texture( uTex0, TexCoord0 + vec2(- texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(0,-texel.y) ) + texture( uTex0, TexCoord0 +
   //  vec2(texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) +
@@ -60,9 +66,11 @@ vec3 TopColor = hexToRgb(float(0xE9E5DC));
   color.g = 1.0/(seed*seed+1.0);
   color.b = 1.0/(1.0+seed*seed);
   
-  color.g = lerp(color.g, TopColor.g, smoothstep(0.9, 1., TexCoord0.y + 0.2+0.2*sin(2.1*TexCoord0.x)));
-  color.b = lerp(color.b, TopColor.b, smoothstep(0.9, 1., TexCoord0.y + 0.15+0.15*cos(1.4+1.1*TexCoord0.x)));
-
+  color.g = lerp(color.g, topColorFallback.g, smoothstep(0.9, 1., TexCoord0.y + 0.2+0.2*sin(2.1*TexCoord0.x)));
+  color.b = lerp(color.b, topColorFallback.b, smoothstep(0.9, 1., TexCoord0.y + 0.15+0.15*cos(1.4+1.1*TexCoord0.x)));
+  if(topColorFallback.r > red_thresh){
+    color.r = lerp(color.r, topColorFallback.r, smoothstep(0.95, 1., TexCoord0.y + 0.04+0.004*sin(2.1*TexCoord0.x)));
+  }
   float _c = 0.75;
   float _n = 1.0;
   float count = (a1 ? _c : 0.0) + (a3 ? _c : 0.0)+ (a7 ? _c : 0.0)+ (a9 ? _c : 0.0)+ (a2 ? _n : 0.0)+ (a4 ? _n : 0.0)+ (a6 ? _n : 0.0)+ (a8 ? _n : 0.0);
