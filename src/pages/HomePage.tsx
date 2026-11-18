@@ -10,19 +10,6 @@ import "../styles/home.css";
 import imgbook from "../assets/booktall.jpg";
 import MazeShader from "@/components/Maze";
 
-const categoryLinks = [
-  ["01", "Graphics", "/graphics", "Rendering, simulation, and procedural systems"],
-  ["02", "Robotics", "/robotics", "Perception, planning, and physical interaction"],
-  ["03", "Games", "/games", "Playable systems and interactive worlds"],
-];
-
-const heroWords = [
-  "graphics programming",
-  "robotics",
-  "software engineering",
-  "sandbox games",
-];
-
 export default function HomePage() {
   return (
     <main className="home">
@@ -35,16 +22,9 @@ export default function HomePage() {
         <h1 className="hero__title">
           <span className="hero__line">Hey! I'm</span>
           <span className="hero__line">Paulo Khayat</span>
+        <p className="hero__intro">asdasd</p>
+          
         </h1>
-        <div className="hero__bottom">
-          <p className="hero__intro">asdasd</p>
-          <a className="hero__button" href="#projects" aria-label="See featured projects">
-            <Arrow down />
-          </a>
-        </div>
-        <div className="hero__blob hero__blob--coral" />
-        <div className="hero__blob hero__blob--violet" />
-        <div className="hero__blob hero__blob--sky" />
       </section>
 
       {/* Projects */}
