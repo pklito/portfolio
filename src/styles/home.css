@@ -10,8 +10,8 @@
 :root {
 --paper: #FFFFFF;
 --ink: #171717;
---mint: #B6C8B1;
---violet: #6956A5;
+--mint: #f9fbed;
+--violet: ##007679;
 --coral: #E63B2E;
 --acid: #D9E66A;
 --sky: #9CB9D1;
@@ -203,7 +203,7 @@
    ========================================================= */
 .projects {
   padding: 6rem var(--page-x);
-  background: #fff0d8;
+  background: var(--mint);
 }
 .projects__header {
   display: flex;
