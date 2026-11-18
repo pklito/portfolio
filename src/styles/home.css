@@ -8,13 +8,13 @@
    Tailwind theme (src/index.css @theme block or tailwind.config).
    Only --ink is known for sure (from the #243142 shadow). */
 :root {
-  --paper: #fbf7ef;
-  --ink: #243142;
-  --mint: #b9f0d2;
-  --violet: #7a5cff;
-  --coral: #ff7a59;
-  --acid: #d7ff3f;
-  --sky: #a9d8ff;
+--paper: #E9E5DC;
+--ink: #171717;
+--mint: #B6C8B1;
+--violet: #6956A5;
+--coral: #E63B2E;
+--acid: #D9E66A;
+--sky: #9CB9D1;
 
   --font-sans: "Inter", system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
@@ -622,8 +622,8 @@
   top: 0;
   z-index: 50;
   padding: 0 var(--page-x);
-  background-color: var(--ink);
-  color: var(--paper);
+  background-color: var(--paper);
+  color: var(--ink);
   border-bottom: 1px solid color-mix(in srgb, var(--paper) 15%, transparent);
 }
 
