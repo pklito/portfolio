@@ -22,6 +22,11 @@ import MazeShader from "@/components/Maze"
 
 import HeroShader from "@/components/HeroShader"
 
+const enum CVS{
+  SoftwareEngineering = "cv-se.pdf",
+  TechArt = "cv-ta.pdf"
+}
+const cvShown = CVS.TechArt;
 export default function HomePage() {
   return (
     <main className="home">
@@ -139,7 +144,7 @@ export default function HomePage() {
         <div className="cv__overlay" />
         <div className="cv__content">
           <PdfViewer
-            src="/cv-ta.pdf"
+            src={"/" + cvShown}
             title="My CV"
             downloadName="Paulo-Khayat-CV.pdf"
           />
