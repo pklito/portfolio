@@ -57,20 +57,27 @@ vec2 reform(vec2 x){
 }
 
 void main() {
-    
+    float scale = 10.;
     vec2 imgUV = getCoverUV(v_uv, u_resolution, u_image_resolution);
-    vec2 base = voronoi(5.*imgUV);
+    vec2 base = voronoi(scale*imgUV);
     vec4 texColor = vec4(0.0);
-
+    float t = 0.9 + 0.1 * sin(u_time);
     for (int j = -1; j <= 1; j++) {
       for (int i = -1; i <= 1; i++) {
         vec2 c = base + vec2(float(i), float(j));
         vec2 d = (-random2(c) * vec2(1., 0.3)) * 0.1;
-        d = smoothstep(0.3, -0.3, c.x) *d;
+        d = smoothstep(0.4, -0.3, c.x / scale) *d;
+        float shrink = smoothstep(-0.9, 0.2, c.x / scale);
+        shrink *= smoothstep(-0.1, 0.1, c.x / scale);
+        d *= smoothstep(0.4, -0.3, c.x / scale);
+
+
         vec2 q = imgUV - d;
-        q = 0.9*(q - c) + c;
-        if (voronoi(5.*q) == c) {
-            texColor = vec4(0.99*q, 0., 1.);
+        vec2 ctr = (c + random2(c)) / scale;
+        q = ctr + (q - ctr) / shrink;
+        if (voronoi(scale*q) == c) {
+                        texColor = texture2D(u_image, q);
+
         }
       }
     }

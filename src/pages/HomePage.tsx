@@ -35,7 +35,7 @@ export default function HomePage() {
         <h1 className="hero__title">
           <span className="hero__line">Hey! I'm</span>
           <span className="hero__line">Paulo Khayat</span>
-          <p className="hero__intro">asdasd</p>
+          <p className="hero__intro">I do Software engineering, Robotics, and Prodecural tech art</p>
         </h1>
       </section>
 
