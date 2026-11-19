@@ -139,7 +139,7 @@ export default function HomePage() {
         <div className="cv__overlay" />
         <div className="cv__content">
           <PdfViewer
-            src="/cv-se.pdf"
+            src="/cv-ta.pdf"
             title="My CV"
             downloadName="Paulo-Khayat-CV.pdf"
           />
