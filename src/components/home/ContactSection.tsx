@@ -1,6 +1,6 @@
 import Arrow from "../Arrow";
 import Eyebrow from "../Eyebrow";
-import VoronoiShader from "../VoronoiShader";
+import VoronoiShader from "../shaders/VoronoiShader";
 import { profile } from "../../data/site";
 
 export default function ContactSection() {

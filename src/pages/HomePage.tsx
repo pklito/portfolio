@@ -6,7 +6,7 @@ import Footer from "../components/Footer"
 
 import Header from "../components/Header"
 
-import VoronoiShader from "../components/VoronoiShader"
+import VoronoiShader from "../components/shaders/VoronoiShader"
 
 import { currentProject, homepageProjects } from "../data/site"
 
@@ -18,7 +18,7 @@ import "../styles/home.css"
 
 import imgbook from "../assets/booktall.jpg"
 
-import MazeShader from "@/components/Maze"
+import MazeShader from "@/components/shaders/Maze"
 
 import HeroShader from "@/components/HeroShader"
 
