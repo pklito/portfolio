@@ -37,7 +37,9 @@ void main( void ) {
   }
   gl_FragColor = texture2D( uTex0, TexCoord0);
 
-  if(distance(TexCoord0 , u_mouse *texel) < .04 && rand(TexCoord0.xy + vec2(1.,4.+seed))<0.01){
+  float dist = distance(TexCoord0 , u_mouse *texel);
+  float chanceAmount = 0.2 / (0.2 + 10000.*dist*dist) - 0.01;
+  if(rand(TexCoord0.xy + vec2(1.,4.+seed))<chanceAmount){
     gl_FragColor *= 0.;
     gl_FragColor.r = 0.01;
     gl_FragColor.w = 1.;
