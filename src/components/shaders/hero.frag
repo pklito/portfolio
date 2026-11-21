@@ -70,6 +70,7 @@ void main() {
         float shrink = smoothstep(-0.9, 0.2, c.x / scale);
         float move = smoothstep(0.4, -0.3, c.x / scale);
         move *= smoothstep(0.4, -0.3, c.x / scale);
+        move += 0.04 * step(c.x/scale, 0.3) * startFactor;
         shrink *= smoothstep(-0.1, 0.1, c.x / scale);
         move = (1.-startFactor)*(-move) + startFactor*move;
         d*= move;
