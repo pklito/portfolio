@@ -1,4 +1,4 @@
-import FRAGMENT_SHADER from './shaders/maze.frag?raw'
+import FRAGMENT_SHADER from './maze.frag?raw'
 
 const VERTEX_SHADER = `
   attribute vec2 a_position;

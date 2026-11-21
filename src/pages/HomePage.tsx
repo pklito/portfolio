@@ -6,13 +6,9 @@ import Footer from "../components/Footer"
 
 import Header from "../components/Header"
 
-import VoronoiShader from "../components/shaders/VoronoiShader"
-
 import { currentProject, homepageProjects } from "../data/site"
 
 import PdfViewer from "@/components/PdfViewer"
-
-import RotatingWords from "../components/RotatingWords"
 
 import "../styles/home.css"
 
