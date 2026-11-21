@@ -39,6 +39,7 @@ export default function HeroShader({
 }: HeroShaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
+  let mousePos = {x:0, y:0};
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -185,10 +186,15 @@ export default function HeroShader({
       gl.uniform1f(timeLoc, timestamp * 0.001)
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
+
+      let px = {x: pointer.x * dpr, y:(canvas.clientHeight - pointer.y) * dpr};
+      mousePos.x += 0.03*(px.x - mousePos.x);
+      mousePos.y += 0.03*(px.y - mousePos.y);
+
       gl.uniform2f(
         mouseLoc,
-        pointer.x * dpr,
-        (canvas.clientHeight - pointer.y) * dpr,
+        mousePos.x,
+        mousePos.y,
       )
 
       gl.drawArrays(gl.TRIANGLES, 0, 6)
