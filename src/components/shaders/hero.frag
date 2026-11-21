@@ -61,19 +61,21 @@ void main() {
     vec2 imgUV = getCoverUV(v_uv, u_resolution, u_image_resolution);
     vec2 base = voronoi(scale*imgUV);
     vec4 texColor = vec4(0.0);
-    float t = 0.9 + 0.1 * sin(u_time);
+    float startFactor = 1.-1./(u_time*u_time+1.);
     for (int j = -1; j <= 1; j++) {
       for (int i = -1; i <= 1; i++) {
         vec2 c = base + vec2(float(i), float(j));
         vec2 d = (-random2(c) * vec2(1., 0.3)) * 0.1;
-        d = smoothstep(0.4, -0.3, c.x / scale) *d;
         float shrink = smoothstep(-0.9, 0.2, c.x / scale);
+        float move = smoothstep(0.4, -0.3, c.x / scale);
+        move *= smoothstep(0.4, -0.3, c.x / scale);
         shrink *= smoothstep(-0.1, 0.1, c.x / scale);
-        d *= smoothstep(0.4, -0.3, c.x / scale);
-
+        move = (1.-startFactor)*(-move) + startFactor*move;
+        d*= move;
 
         vec2 q = imgUV - d;
         vec2 ctr = (c + random2(c)) / scale;
+        ctr += vec2(0.02,0)+vec2(0.02,0.)*sin(u_time+2.*ctr.y);
         q = ctr + (q - ctr) / shrink;
         if (voronoi(scale*q) == c) {
                         texColor = texture2D(u_image, q);
