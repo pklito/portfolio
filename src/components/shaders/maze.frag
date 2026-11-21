@@ -4,6 +4,7 @@ uniform sampler2D	uTex0;
 uniform float seed;
 uniform vec2 texel;
 varying vec2		TexCoord0;
+uniform vec2 u_mouse;
 
 uniform vec4 topColor;
 

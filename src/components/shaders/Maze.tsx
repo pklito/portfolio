@@ -42,6 +42,7 @@ function createShader(
 export default function MazeShader() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const gl = canvas?.getContext("webgl", { antialias: false });
@@ -51,6 +52,22 @@ export default function MazeShader() {
     canvas.height = SIZE;
 
     const sim = new DoubleBuffer(gl,WIDTH_ASPECT*SIZE, SIZE);
+
+    const onPointerMove = (event: PointerEvent) => {
+      const b = canvas.getBoundingClientRect();
+      const u = (event.clientX - b.left) / b.width;
+      const v = (event.clientY - b.top) / b.height;
+      if (u < 0 || u > 1 || v < 0 || v > 1) {
+        sim.setMouse(-1000, -1000);
+        return;
+      }
+      // map to sim pixels; flip Y because gl_FragCoord starts at the bottom-left
+      sim.setMouse(u * canvas.width, (1 - v) * canvas.height);
+    };
+    const onPointerLeave = () => sim.setMouse(-1000, -1000);
+
+    window.addEventListener("pointermove", onPointerMove);
+    document.addEventListener("pointerleave", onPointerLeave);
 
     const vertexShader = createShader(gl, gl.VERTEX_SHADER, BLIT_VERTEX_SHADER);
     const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, BLIT_FRAGMENT_SHADER);
@@ -117,6 +134,8 @@ export default function MazeShader() {
       gl.deleteShader(vertexShader);
       gl.deleteShader(fragmentShader);
       gl.deleteBuffer(buffer);
+      window.removeEventListener("pointermove", onPointerMove);
+document.removeEventListener("pointerleave", onPointerLeave);
     };
   }, []);
 

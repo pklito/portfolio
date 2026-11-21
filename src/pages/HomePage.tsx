@@ -16,7 +16,7 @@ import imgbook from "../assets/booktall.jpg"
 
 import MazeShader from "@/components/shaders/Maze"
 
-import HeroShader from "@/components/HeroShader"
+import HeroShader from "@/components/shaders/HeroShader"
 
 const enum CVS{
   SoftwareEngineering = "cv-se.pdf",
