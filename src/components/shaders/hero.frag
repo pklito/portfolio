@@ -57,6 +57,7 @@ vec2 reform(vec2 x){
 }
 
 void main() {
+    vec2 mouse = u_mouse / u_resolution;
     float scale = 10.;
     vec2 imgUV = getCoverUV(v_uv, u_resolution, u_image_resolution);
     vec2 base = voronoi(scale*imgUV);
@@ -76,6 +77,7 @@ void main() {
         vec2 q = imgUV - d;
         vec2 ctr = (c + random2(c)) / scale;
         ctr += vec2(0.02,0)+vec2(0.02,0.)*sin(u_time+2.*ctr.y);
+        ctr += 0.1*normalize(ctr-mouse) / (10.+length(ctr-mouse));
         q = ctr + (q - ctr) / shrink;
         if (voronoi(scale*q) == c) {
                         texColor = texture2D(u_image, q);
