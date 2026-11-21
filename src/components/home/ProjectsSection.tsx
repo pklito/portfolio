@@ -1,5 +1,5 @@
-import Arrow from "../Arrow";
-import Eyebrow from "../Eyebrow";
+import Arrow from "../features/Arrow";
+import Eyebrow from "../features/Eyebrow";
 import { homepageProjects } from "../../data/site";
 
 export default function ProjectsSection() {

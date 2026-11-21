@@ -1,5 +1,5 @@
-import Arrow from "../Arrow";
-import Eyebrow from "../Eyebrow";
+import Arrow from "../features/Arrow";
+import Eyebrow from "../features/Eyebrow";
 import VoronoiShader from "../shaders/VoronoiShader";
 import { profile } from "../../data/site";
 

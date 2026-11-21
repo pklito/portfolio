@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import Arrow from "../Arrow";
-import Eyebrow from "../Eyebrow";
+import Arrow from "../features/Arrow";
+import Eyebrow from "../features/Eyebrow";
 
 const categoryLinks = [
   {

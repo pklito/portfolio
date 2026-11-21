@@ -1,5 +1,5 @@
 import type { Project } from "../data/site";
-import Arrow from "./Arrow";
+import Arrow from "./features/Arrow";
 
 export default function ProjectCard({
   project,

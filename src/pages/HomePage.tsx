@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 
-import Arrow from "../components/Arrow"
+import Arrow from "../components/features/Arrow"
 
 import Footer from "../components/Footer"
 
@@ -8,7 +8,7 @@ import Header from "../components/Header"
 
 import { currentProject, homepageProjects } from "../data/site"
 
-import PdfViewer from "@/components/PdfViewer"
+import PdfViewer from "@/components/features/PdfViewer"
 
 import "../styles/home.css"
 
