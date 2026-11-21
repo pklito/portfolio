@@ -37,8 +37,9 @@ void main( void ) {
   }
   gl_FragColor = texture2D( uTex0, TexCoord0);
 
-  if(distance(TexCoord0 , u_mouse *texel) < .04){
-    gl_FragColor *= 0.1;
+  if(distance(TexCoord0 , u_mouse *texel) < .04 && rand(TexCoord0.xy + vec2(1.,4.+seed))<0.01){
+    gl_FragColor *= 0.;
+    gl_FragColor.r = 0.01;
     gl_FragColor.w = 1.;
 
     return;
@@ -62,7 +63,7 @@ void main( void ) {
   bool a7 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ).r > red_thresh;
   bool a8 = texture2D( uTex0, TexCoord0 + vec2(0,texel.y) ).r > red_thresh;
   bool a9 = texture2D( uTex0, TexCoord0 + vec2(texel.x,texel.y) ).r > red_thresh;
-  vec4 color = vec4(1,1,1,1);
+  vec4 color = vec4(1.-gl_FragColor.r,1,1,1);
   // vec4 color = texture( uTex0, TexCoord0 + vec2(- texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(0,-texel.y) ) + texture( uTex0, TexCoord0 +
   //  vec2(texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) +
   //   texture( uTex0, TexCoord0 + vec2(texel.x,0) ) + texture( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ) + texture( uTex0, TexCoord0 + vec2(0,texel.y) )
