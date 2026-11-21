@@ -106,7 +106,7 @@ private mouseLoc: WebGLUniformLocation | null = null;
     gl.uniform1f(gl.getUniformLocation(this.program, "seed"), seed - this.skipped_time);
     gl.uniform2f(gl.getUniformLocation(this.program, "texel"), 1 / this.width, 1 / this.height);
     gl.uniform4f(gl.getUniformLocation(this.program, "topColor"), this.topColor[0], this.topColor[1], this.topColor[2], this.topColor[3]);
-    gl.uniform2f(gl.getUniformLocation(this.program, "mouse"), this.mouse[0], this.mouse[1]);
+    gl.uniform2f(gl.getUniformLocation(this.program, "u_mouse"), this.mouse[0], this.mouse[1]);
 
 
     gl.drawArrays(gl.TRIANGLES, 0, 6);

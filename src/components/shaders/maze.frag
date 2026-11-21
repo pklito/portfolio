@@ -36,6 +36,13 @@ void main( void ) {
     topColorFallback = topColor;
   }
   gl_FragColor = texture2D( uTex0, TexCoord0);
+
+  if(distance(TexCoord0 , u_mouse *texel) < .04){
+    gl_FragColor *= 0.1;
+    gl_FragColor.w = 1.;
+
+    return;
+  }
   if(gl_FragColor.r > red_thresh){
     return;
   }
