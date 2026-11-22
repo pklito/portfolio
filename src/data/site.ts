@@ -1,7 +1,7 @@
 export type ProjectCategory = "graphics" | "robotics" | "games";
 import jamsPh from "../assets/projects/jams.png"
 import fireBallVid from "../assets/projects/fireball.mp4";
-import stylizedVid from "../assets/projects/stylized.mp4";
+import stylizedVid from "../assets/projects/Stylized.mp4";
 export type Project = {
   title: string;
   year: string;
