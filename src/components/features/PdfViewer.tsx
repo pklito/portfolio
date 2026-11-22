@@ -34,11 +34,7 @@ export default function PdfViewer({
   const showEmbed = useMediaQuery("(min-width: 768px) and (pointer: fine)");
 
   const downloadButton = (
-    <a
-      className="inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 font-mono text-[10px] tracking-[0.08em] text-paper uppercase transition-transform hover:scale-105"
-      href={src}
-      download={downloadName}
-    >
+    <a className="pdf-viewer__button" href={src} download={downloadName}>
       Download PDF <span aria-hidden="true">↓</span>
     </a>
   );
@@ -46,18 +42,18 @@ export default function PdfViewer({
   if (!showEmbed) return downloadButton;
 
   return (
-    <div className="">
+    <div className="pdf-viewer">
       <object
         aria-label={title}
-        className="h-[85vh] w-full rounded-2xl border border-ink/10 bg-white"
+        className="pdf-viewer__object"
         data={`${src}#view=FitH&navpanes=0`}
         type="application/pdf"
       >
-        <p className="p-6 text-sm">
+        <p className="pdf-viewer__fallback">
           Your browser can't display this PDF here. Use the download button below.
         </p>
       </object>
-      <div className="mt-4">{downloadButton}</div>
+      <div className="pdf-viewer__actions">{downloadButton}</div>
     </div>
-  ); 
+  );
 }

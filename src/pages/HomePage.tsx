@@ -163,7 +163,6 @@ export default function HomePage() {
       <Header />
       <Hero />
       <Projects />
-      <CurrentProject />
       <About />
       <CvSection />
       <Footer blue />
