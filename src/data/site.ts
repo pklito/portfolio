@@ -8,6 +8,7 @@ export type Project = {
   image: string;
   featured?: boolean;
   url?: string;
+  category: string;
 };
 
 // This file is the portfolio's content hub. Edit text and projects here first.
@@ -41,7 +42,6 @@ export const homepageProjects = [
     image:
       "https://raw.githubusercontent.com/pklito/cube-image-detection/refs/heads/main/docs/solution.png",
     url: "https://github.com/pklito/cube-image-detection",
-    color: "bg-sky",
   },
   {
     title: "ARMP Paired Pathing",
@@ -50,7 +50,6 @@ export const homepageProjects = [
       "Two robot arms coordinate their paths while one balances a ball and the other observes it with a camera.",
     image: "https://i.postimg.cc/SKjdwjpW/image.png",
     url: "https://github.com/pklito/ARMP-Project/tree/main",
-    color: "bg-coral",
   },
   {
     title: "Twitter Bookmark Sorter",
@@ -60,7 +59,6 @@ export const homepageProjects = [
     image:
       "https://github.com/user-attachments/assets/f066910a-94c5-4d92-8736-53f07eb5855f",
     url: "https://github.com/pklito/x-storer",
-    color: "bg-mint",
   },
   {
     title: "Game jams",
@@ -70,7 +68,6 @@ export const homepageProjects = [
     image:
       "https://img.itch.zone/aW1nLzI4NzgzOTQ1LmdpZg==/315x250%23c/B3IUi%2B.gif",
     url: "https://itch.io/c/8391890/games-ive-made",
-    color: "bg-mint",
   },
 ];
 

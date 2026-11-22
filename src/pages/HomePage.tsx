@@ -9,6 +9,7 @@ import "../styles/home.css"
 import imgbook from "../assets/booktall.jpg"
 import MazeShader from "@/components/shaders/Maze"
 import HeroShader from "@/components/shaders/HeroShader"
+import ProjectCard from "@/components/ProjectCard"
 
 const enum CVS {
   SoftwareEngineering = "cv-se.pdf",
@@ -35,39 +36,6 @@ function Hero() {
   )
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  return (
-    <a
-      className="project-card"
-      href={project.url}
-      rel="noreferrer"
-      target="_blank"
-    >
-      <div className="project-card__media">
-        <img
-          className="project-card__image"
-          src={project.image}
-          alt={`${project.title} project preview`}
-        />
-        <span className={`project-card__tag ${project.color}`}>
-          {project.category}
-        </span>
-      </div>
-      <div className="project-card__body">
-        <div className="project-card__row">
-          <span className="project-card__number">0{index + 1}</span>
-          <span className="project-card__arrow">
-            <Arrow />
-          </span>
-        </div>
-        <h3 className="project-card__title">{project.title}</h3>
-        <p className="project-card__description">{project.description}</p>
-        <p className="project-card__link">View on GitHub ↗</p>
-      </div>
-    </a>
-  )
-}
-
 function Projects() {
   return (
     <section className="projects" id="projects">
@@ -81,8 +49,8 @@ function Projects() {
         </p>
       </div>
       <div className="projects__grid">
-        {homepageProjects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} index={index} />
+        {homepageProjects.map((projec, index) => (
+          <ProjectCard project={projec} index={index} />
         ))}
       </div>
     </section>

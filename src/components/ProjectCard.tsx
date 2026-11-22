@@ -1,51 +1,28 @@
 import type { Project } from "../data/site";
 import Arrow from "./features/Arrow";
 
-export default function ProjectCard({
-  project,
-  index,
-  wide = false,
-}: {
-  project: Project;
-  index: number;
-  wide?: boolean;
-}) {
+export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   const content = (
     <>
-      <div
-        className={`work-card__media ${
-          wide ? "work-card__media--wide" : "work-card__media--tall"
-        }`}
-      >
-        <img className="work-card__image" src={project.image} alt="" />
-        <div className="work-card__overlay" />
-        <span className="work-card__index">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <span className="work-card__arrow">
-          <Arrow />
-        </span>
+      <div className="project-card__media">
+        <img className="project-card__image" src={project.image} alt="" />
+        <span className={`project-card__tag`}>{project.category}</span>
       </div>
-      <div className="work-card__header">
-        <div>
-          <h2 className="work-card__title">{project.title}</h2>
-          <p className="work-card__tools">{project.tools}</p>
+      <div className="project-card__body">
+        <div className="project-card__row">
+          <h3 className="project-card__title">{project.title}</h3>
+          <span className="project-card__arrow"><Arrow /></span>
         </div>
-        <span className="work-card__year">{project.year}</span>
+        <p className="project-card__description">{project.description}</p>
+        {project.url && <p className="project-card__link">View on GitHub ↗</p>}
       </div>
-      <p className="work-card__description">{project.description}</p>
     </>
   );
 
   return (
-    <article className={`work-card ${wide ? "work-card--wide" : ""}`}>
+    <article className="project-card">
       {project.url ? (
-        <a
-          className="work-card__link"
-          href={project.url}
-          rel="noreferrer"
-          target="_blank"
-        >
+        <a className="project-card__anchor" href={project.url} rel="noreferrer" target="_blank">
           {content}
         </a>
       ) : (
