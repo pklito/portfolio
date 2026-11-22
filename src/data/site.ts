@@ -1,6 +1,7 @@
 export type ProjectCategory = "graphics" | "robotics" | "games";
 import jamsPh from "../assets/projects/jams.png"
 import fireBallGif from "../assets/projects/fireball.gif";
+import stylizedGif from "../assets/projects/stylized.gif";
 export type Project = {
   title: string;
   year: string;
@@ -86,5 +87,16 @@ export const homepageProjects = [
       "Shader homework to come up with and create a stylized fireball",
     image:
       fireBallGif,
+      url: "https://pklito.github.io/hw01-fireball/"
+  },
+  
+  {
+    title: "Unity Stylization",
+    category: "Shader graph",
+    description:
+      "Doing a stylized shader that resembles a watercolor source reference art.",
+    image:
+      stylizedGif,
+      url: "https://github.com/pklito/cis5660-hw02-stylization"
   },
 ];

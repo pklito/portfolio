@@ -29,7 +29,7 @@ function Hero() {
         <span className="hero__line">Hey! I'm</span>
         <span className="hero__line">Paulo Khayat</span>
         <p className="hero__intro">
-          I do Software engineering, Robotics, and Prodecural tech art
+          I do Game development, Robotics,<br></br> and Prodecural tech art
         </p>
       </h1>
     </section>
@@ -41,7 +41,7 @@ function Projects() {
     <section className="projects" id="projects">
       <div className="projects__header">
         <div>
-          <p className="label">A few things I’ve made</p>
+          {/*<p className="label">A few things I’ve made</p>*/}
           <h2 className="projects__title">Projects</h2>
         </div>
         <p className="projects__hint">
@@ -92,15 +92,23 @@ function About() {
   return (
     <section className="about">
       <div>
-        <p className="label">A short about</p>
-        <h2 className="about__title">
-          Curious by
-          <br />
-          <em className="serif">default.</em>
-        </h2>
+        <p className="about__title">About me</p>
       </div>
       <div>
-        <ul className="about__list"></ul>
+        <p className="about__text">
+          Hello again! my name is Paulo Emil Khayat I'm from Haifa, and I'm currently doing my Master's at
+          the <strong>University of Pennsylvania</strong> in{" "}
+          <strong>Computer Graphics and Game Technologies</strong>.
+        </p>
+        <br></br>
+    <p>
+          I enjoy playing and making games, doing technical hobby projects, playing guitar, and thinking of new ways to make my friends laugh.
+    </p>
+    <br></br>
+    <p>
+      I also enjoy teaching programming, and I have mentored the robotics team #5987 for three years.
+    </p>
+    <p>I'll go into more details in the page below!    <br></br><br></br>  <i>I'm currently reconstructing this website so this link may fail</i></p>
         <Link className="about__link" to="/about">
           Read the detailed about <Arrow />
         </Link>

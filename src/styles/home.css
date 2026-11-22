@@ -204,7 +204,7 @@
    Projects
    ========================================================= */
 .projects {
-  padding: 6rem var(--page-x);
+  padding: 3rem var(--page-x);
   background: var(--mint);
 }
 .projects__header {
