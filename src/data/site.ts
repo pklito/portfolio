@@ -1,5 +1,6 @@
 export type ProjectCategory = "graphics" | "robotics" | "games";
-
+import jamsPh from "../assets/projects/jams.png"
+import fireBallGif from "../assets/projects/fireball.gif";
 export type Project = {
   title: string;
   year: string;
@@ -75,7 +76,15 @@ export const homepageProjects = [
     description:
       "A collection of some game jam games I made under time pressure!\nThese ones are all playable in browser.",
     image:
-      "https://img.itch.zone/aW1nLzI4NzgzOTQ1LmdpZg==/315x250%23c/B3IUi%2B.gif",
+      jamsPh,
     url: "https://itch.io/c/8391890/games-ive-made",
+  },
+  {
+    title: "Firewall Shader",
+    category: "Shaders",
+    description:
+      "Shader homework to come up with and create a stylized fireball",
+    image:
+      fireBallGif,
   },
 ];
