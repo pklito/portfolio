@@ -923,3 +923,12 @@
   font-weight: bold;
 
 }
+
+.loop-video { position: relative; cursor: pointer; }
+.loop-video__icon {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: 2.5rem; color: white;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}

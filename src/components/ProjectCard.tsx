@@ -1,11 +1,17 @@
 import type { Project } from "../data/site";
 import Arrow from "./features/Arrow";
 import {categoryColors, defaultCategoryColor} from "../data/site";
+import LoopVideo from "./features/LoopVideo";
+
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const isVideo = /\.(mp4|webm)$/i.test(project.image);
+
   const content = (
     <>
       <div className="project-card__media">
-        <img className="project-card__image" src={project.image} alt="" />
+{isVideo
+  ? <LoopVideo src={project.image} />
+  : <img className="project-card__image" src={project.image} alt="" />}
       </div>
       <div className="project-card__body">
         <div className="project-card__row">
