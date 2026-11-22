@@ -1,4 +1,4 @@
-import Eyebrow from "../Eyebrow";
+import Eyebrow from "../features/Eyebrow";
 import { currentProject } from "../../data/site";
 
 export default function CurrentProject() {

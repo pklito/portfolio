@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
-import defaultHeroImage from "../assets/booktall.jpg"
-import FRAGMENT_SHADER from "./shaders/hero.frag?raw"
+import defaultHeroImage from "../../assets/booktall.jpg"
+import FRAGMENT_SHADER from "./hero.frag?raw"
 
 const VERTEX_SHADER = `
   attribute vec2 a_position;

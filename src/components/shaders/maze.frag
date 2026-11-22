@@ -4,6 +4,7 @@ uniform sampler2D	uTex0;
 uniform float seed;
 uniform vec2 texel;
 varying vec2		TexCoord0;
+uniform vec2 u_mouse;
 
 uniform vec4 topColor;
 
@@ -35,6 +36,16 @@ void main( void ) {
     topColorFallback = topColor;
   }
   gl_FragColor = texture2D( uTex0, TexCoord0);
+
+  float dist = distance(TexCoord0 , u_mouse *texel);
+  float chanceAmount = 0.2 / (0.2 + 10000.*dist*dist) - 0.01;
+  if(rand(TexCoord0.xy + vec2(1.,4.+seed))<chanceAmount){
+    gl_FragColor *= 0.;
+    gl_FragColor.r = 0.01;
+    gl_FragColor.w = 1.;
+
+    return;
+  }
   if(gl_FragColor.r > red_thresh){
     return;
   }
@@ -54,7 +65,7 @@ void main( void ) {
   bool a7 = texture2D( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ).r > red_thresh;
   bool a8 = texture2D( uTex0, TexCoord0 + vec2(0,texel.y) ).r > red_thresh;
   bool a9 = texture2D( uTex0, TexCoord0 + vec2(texel.x,texel.y) ).r > red_thresh;
-  vec4 color = vec4(1,1,1,1);
+  vec4 color = vec4(1.-gl_FragColor.r,1,1,1);
   // vec4 color = texture( uTex0, TexCoord0 + vec2(- texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(0,-texel.y) ) + texture( uTex0, TexCoord0 +
   //  vec2(texel.x,- texel.y) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) + texture( uTex0, TexCoord0 + vec2(-texel.x,0) ) +
   //   texture( uTex0, TexCoord0 + vec2(texel.x,0) ) + texture( uTex0, TexCoord0 + vec2(- texel.x,texel.y) ) + texture( uTex0, TexCoord0 + vec2(0,texel.y) )

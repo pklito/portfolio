@@ -1,4 +1,4 @@
-import FRAGMENT_SHADER from './shaders/maze.frag?raw'
+import FRAGMENT_SHADER from './maze.frag?raw'
 
 const VERTEX_SHADER = `
   attribute vec2 a_position;
@@ -26,6 +26,8 @@ export default class DoubleBuffer {
   private time: number = 0;
   private skipped_time: number = 0;
   private topColor: [number,number,number,number] = hexToVec4("#FFFFFF");
+private mouse: [number, number] = [-1000, -1000];
+private mouseLoc: WebGLUniformLocation | null = null;
 
   constructor(gl: WebGLRenderingContext, width: number, height: number) {
     this.gl = gl;
@@ -76,7 +78,11 @@ export default class DoubleBuffer {
   get texture() {
     return this.textures[this.readIndex];
   }
-  
+  setMouse(x: number, y: number) {
+    this.mouse[0] = x;
+    this.mouse[1] = y;
+  }
+
   step(seed: number) {
     if(seed - this.time > 0.3){
       this.skipped_time += seed - this.time;
@@ -100,6 +106,8 @@ export default class DoubleBuffer {
     gl.uniform1f(gl.getUniformLocation(this.program, "seed"), seed - this.skipped_time);
     gl.uniform2f(gl.getUniformLocation(this.program, "texel"), 1 / this.width, 1 / this.height);
     gl.uniform4f(gl.getUniformLocation(this.program, "topColor"), this.topColor[0], this.topColor[1], this.topColor[2], this.topColor[3]);
+    gl.uniform2f(gl.getUniformLocation(this.program, "u_mouse"), this.mouse[0], this.mouse[1]);
+
 
     gl.drawArrays(gl.TRIANGLES, 0, 6);
 
