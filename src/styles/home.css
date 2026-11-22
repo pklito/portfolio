@@ -260,13 +260,10 @@
   transform: scale(1.03);
 }
 .project-card__tag {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
   padding: 0.5rem 0.75rem;
-  border-radius: 9999px;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 12px;
+  font-style: oblique;
   text-transform: uppercase;
 }
 .project-card__body {
@@ -301,16 +298,15 @@
   transform: rotate(-10deg);
 }
 .project-card__title {
-  margin-top: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 2rem;
   letter-spacing: -0.04em;
 }
 .project-card__description {
   margin-top: 0.75rem;
   font-size: 0.75rem;
-  line-height: 1.5rem;
-  opacity: 0.6;
+  line-height: 1.2rem;
+  opacity: 0.85;
 }
 .project-card__link {
   margin-top: 1.75rem;
